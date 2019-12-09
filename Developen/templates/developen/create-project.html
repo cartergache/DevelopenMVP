@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+
+
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="{% static "projects/bootstrap-4.3.1-dist/css/bootstrap.css" %}">
+      <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="{% static "projects/bootstrap-4.3.1-dist/css/simple-sidebar.css" %}">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
+
+     <style>
+         .navbar-brand{
+             font-family: 'Amatic SC', cursive;
+             font-weight: bold;
+             font-size: 2.5rem;
+         }
+
+         .navbar{
+             height: 4rem;
+         }
+
+          .navbar-custom {
+            background-color: #10141c;
+           }
+
+         .dropdown-item {
+             color: white;
+         }
+
+         <!--
+         .unselectable {
+            -webkit-user-select: none;  /* Chrome all / Safari all */
+            -moz-user-select: none;     /* Firefox all */
+            -ms-user-select: none;      /* IE 10+ */
+            user-select: none;          /* Likely future */
+         -->
+         }
+     </style>
+
+
+	</head>
+	<body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample08">
+        <ul class="col-md-4 navbar-nav nav-fill">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Explore</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/projects/create/">Start a Project</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Archive</a>
+          </li>
+        </ul>
+
+        <a class="col-md-4 navbar-brand nav-link" style="text-align: center" href="/projects/home/">Developen <span class="sr-only">(current)</span></a>
+
+        <ul class="col-md-4 navbar-nav nav-fill">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Assignment</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Notifications</a>
+          </li>
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Profile </a>
+            <div class="dropdown-menu navbar-custom" aria-labelledby="dropdown08">
+              <a class="dropdown-item" style="-webkit-user-select: none" href="">Welcome {{ userName }}</a><br>
+              <a class="dropdown-item" href="/projects">My Projects</a>
+              <a class="dropdown-item" href="#">My Contributions</a>
+              <a class="dropdown-item" href="#">My Account</a>
+              <a class="dropdown-item" href="/projects/sign-out/">Log Out</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- end nav bar -->
+
+    <div id="page-content-wrapper">
+        <div style="width:300px; padding-bottom: 10px;">
+			<form action="" method="post">
+			{% csrf_token %}
+			<form>
+			  <div class="form-group">
+			    <label>{{ form.username.label_tag }}</label>
+			    {{ form.name }}
+			  </div>
+              <div class="form-group">
+			    <label>{{ form.description.label_tag }}</label>
+			    {{ form.description }}
+			  </div>
+              <div class="form-group">
+			    <label>{{ form.reward.label_tag }}</label>
+			    {{ form.reward }}
+			  </div>
+              <div class="form-group">
+			    <label>{{ form.deadline.label_tag }}</label>
+			    {{ form.deadline }}
+			  </div>
+			  <input type="submit" class="btn btn-primary" value="Create">
+			</form>
+          </form>
+		</div>
+    </div>
+
+      <!-- jQuery -->
+  <script src="{% static "projects/bootstrap-4.3.1-dist/js/jquery-1.12.0.min.js" %}"></script>
+  <!-- Bootstrap JS -->
+  <script src="{% static "projects/bootstrap-4.3.1-dist/js/bootstrap.js" %}"></script>
+	</body>
+</html>
+

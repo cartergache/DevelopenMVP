@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="{% static "projects/bootstrap-4.3.1-dist/css/bootstrap.min.css" %}">
+		<script src="{% static "projects/bootstrap-4.3.1-dist/js/bootstrap.min.js" %}"></script>
+	</head>
+	<body>
+		<div style="width:300px;">
+			<form action="" method="post">
+			{% csrf_token %}
+			<form>
+			  <div class="form-group">
+			    <label>{{ form.firstname.label_tag }}</label>
+			    {{ form.firstname }}
+			  </div>
+			  <div class="form-group">
+			    <label>{{ form.lastname.label_tag }}</label>
+			    {{ form.lastname }}
+			  </div>
+			  <div class="form-group">
+			    <label>{{ form.username.label_tag }}</label>
+			    {{ form.username }}
+			  </div>
+			  <div class="form-group">
+			    <label>{{ form.password.label_tag }}</label>
+			    {{ form.password }}
+			  </div>
+              <div class="form-group">
+			    <label>{{ form.email.label_tag }}</label>
+			    {{ form.email }}
+			  </div>
+			  	<input type="submit" class="btn btn-primary" value="Next">
+			</form>
+          </form>
+		</div>
+	</body>
+</html>

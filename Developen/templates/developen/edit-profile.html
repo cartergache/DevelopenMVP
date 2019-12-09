@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="{% static "projects/bootstrap-4.3.1-dist/css/bootstrap.css" %}">
+      <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="{% static "projects/bootstrap-4.3.1-dist/css/simple-sidebar.css" %}">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
+
+     <style>
+         .navbar-brand{
+             font-family: 'Amatic SC', cursive;
+             font-weight: bold;
+             font-size: 2.5rem;
+         }
+
+         .navbar{
+             height: 4rem;
+         }
+
+          .navbar-custom {
+            background-color: #10141c;
+           }
+
+         .dropdown-item {
+             color: white;
+         }
+
+     </style>
+  </head>
+
+  <body>
+
+   <!-- nav bar -->
+       <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample08">
+        <ul class="col-md-4 navbar-nav nav-fill">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Explore</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/create">Start a Project</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Archive</a>
+          </li>
+        </ul>
+
+        <a class="col-md-4 navbar-brand nav-link" style="text-align: center" href="/home">Developen <span class="sr-only">(current)</span></a>
+
+        <ul class="col-md-4 navbar-nav nav-fill">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Assignment</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Notifications</a>
+          </li>
+            {% if userStatus %}
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Profile </a>
+            <div class="dropdown-menu navbar-custom" aria-labelledby="dropdown08">
+              <a class="dropdown-item" href="">Welcome {{ userName }}</a><br>
+              <a class="dropdown-item" href="/projects">My Projects</a>
+              <a class="dropdown-item" href="#">My Contributions</a>
+              <a class="dropdown-item" href="#">My Account</a>
+              <a class="dropdown-item" href="/sign-out">Log Out</a>
+            </div>
+          </li>
+            {% endif %}
+            {% if not userStatus %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/sign-in" data-toggle="modal" data-target="#exampleModal">Log In</a>
+                </li>
+            {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <!-- end nav bar -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+        <div class="container-fluid text-center">
+         <!-- Enter Content Here -->
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Submit</button>
+            </form>
+
+        </div>
+    </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+      </div>
+      <div class="modal-body">
+        	<div style="width:auto; padding-bottom: 10px; text-align: center">
+			<form action="" method="post">
+			{% csrf_token %}
+			<form>
+			  <div class="form-group">
+			    <label>{{ form.username.label_tag }}</label>
+			    {{ form.username }}
+			  </div>
+			  <div class="form-group">
+			    <label>{{ form.password.label_tag }}</label>
+			    {{ form.password }}
+			  </div>
+			  	<input type="submit" class="btn btn-primary" value="Go">
+			</form>
+          </form>
+		</div>
+		<a href="/create-account/" style="text-align: center" role="button">New to Developen? Sign Up!</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- jQuery -->
+  <script src="{% static "projects/bootstrap-4.3.1-dist/js/jquery-1.12.0.min.js" %}"></script>
+  <!-- Bootstrap JS -->
+  <script src="{% static "projects/bootstrap-4.3.1-dist/js/bootstrap.js" %}"></script>
+
+  </body>
+</html>
+
